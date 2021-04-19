@@ -1,12 +1,12 @@
-def twoSum(self, nums, target):
-        a = {}
-        for i,n in enumerate(nums):
-            m = target - n
-            if m in a:
-                return [a[m],i]
-            else:
-                a[n] = i
+'''
+Solving using hastable
+'''
 
-'''
-using hash table approach to reduce the time complexity
-'''
+def twosum(self,nums,target):
+    dic= {}
+    for index,value in enumerate(nums):
+        m = target-value
+        if m in dic:
+            return[dic[m],index]
+        else:
+            dic[value] = index

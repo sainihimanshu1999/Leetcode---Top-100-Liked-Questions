@@ -1,3 +1,27 @@
+'''
+New solution
+'''
+
+def longestsubstring(self,A):
+    used = {}
+    start = maxlength = 0
+
+    for index,char in enumerate(A):
+        if char in used and start<=used[char]:
+            start = used[char]+1
+        else:
+            maxlength = max(maxlength,index-start+1)
+        used[char] = index
+
+    return maxlength
+
+
+
+
+'''
+old solution
+'''
+
 def lengthOfLongestSubstring(self, s):
         lastIndex = [-1]*256
         n = len(s)
