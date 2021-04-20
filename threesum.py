@@ -1,27 +1,24 @@
- def threeSum(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
-        nums.sort()
-        N = len(nums)
-        result = []
-        
-        for i in range(N):
-            if i>0 and nums[i]==nums[i-1]:
-                continue
-            target = nums[i]*-1
-            s = i+1
-            e = N-1
-            
-            while s<e:
-                if nums[s]+nums[e] == target:
-                    result.append([nums[i],nums[s],nums[e]])
-                    s += 1
-                    while s<e and nums[s] == nums[s-1]:
-                        s = s+1
-                elif nums[s] + nums[e] < target:
-                    s = s+1
-                else:
-                    e = e-1
-        return result
+def threesum(self,nums):
+    nums.sort()
+    N,result = len(nums),[]
+
+    #used to remove duplicates in 3 sum
+    for i in range(N):
+        if i>0 and nums[i] == nums[i-1]:
+            continue
+
+        start,end = i , N-1
+        target = nums[i]*-1
+
+        while start<end:
+            if nums[start]+nums[end] == target:
+                result.append([nums[start],nums[end],nums[i]])
+                start += 1
+
+                #used to remove duplicates in 2sum
+                while start<end and nums[start] == nums[start-1]:
+                    start+=1
+            elif nums[start]+nums[end]<target:
+                start+=1
+            else:
+                end -=1
