@@ -1,4 +1,45 @@
 '''
+New Solution
+This is also dp programming
+'''
+
+def palindromicSubstring(self,s):
+    n = len(s)
+    #intiating a DP
+    dp = [[False]*n for _ in range(n)]
+
+    #single element is always palindromic 
+    ans = ''
+    for i in range(n):
+        dp[i][i] = True
+        ans = s[i]
+
+    maxLen = 1
+    #starting from bottom and keep comparing
+    for start in range(n-1,-1,-1):
+        for end in range(start+1,n):
+            if dp[start] == dp[end]:
+                if start-end == 1 or dp[start+1][end-1]:
+                    dp[start][end] = True
+                    if maxLen< end-start+1:
+                        maxLen = end - start+1
+                        ans = s[start:end+1]
+    return ans
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+Old solution
 This approach is using dynamic programming using the table approach, it's quite complex indeed
 '''
 
