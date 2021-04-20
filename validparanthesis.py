@@ -1,29 +1,52 @@
-def isValid(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        stack = [] 
-        for char in s: 
-            if char in ["(", "{", "["]: 
-  
-                stack.append(char) 
-            else: 
-   
-                if not stack: 
+'''
+Stack solution
+'''
+
+def paran(self,s):
+    stack = []
+
+    for i in s:
+        if i in '{([':
+            stack.append(i)
+        
+        else:
+            if not stack:
+                return False
+            x = stack.pop()
+
+            if x =='(':
+                if i != ')':
                     return False
-                current_char = stack.pop() 
-                if current_char == '(': 
-                    if char != ")": 
-                        return False
-                if current_char == '{': 
-                    if char != "}": 
-                        return False
-                if current_char == '[': 
-                    if char != "]": 
-                        return False
-  
-     
-        if stack: 
+            
+            elif x =='{':
+                if i != '}':
+                    return False
+
+            elif x == '[':
+                if i != ']':
+                    return False
+    if stack:
+        return False
+    return True
+
+
+
+'''
+Dictionary solution
+'''
+
+
+def paran(self,s):
+    dic = { ')':'(', '}':'{' , ']':'['}
+
+    stack = []
+
+    for i in s:
+        if i in dic.values():
+            stack.append(i)
+        elif i in dic.keys():
+            if not stack or dic[i] != stack.pop():
+                return False
+        else:
             return False
-        return True
+    return stack == []
