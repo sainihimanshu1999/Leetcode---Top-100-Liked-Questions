@@ -6,7 +6,7 @@ def uniquePath(self,row,col):
     if not row or not col:
         return 0
 
-    dp = [[1]*col for i in range row]
+    dp = [[1]*col for i in range(row)]
 
     for i in range(1,row):
         for j in range(1,col):
