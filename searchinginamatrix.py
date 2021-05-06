@@ -1,5 +1,5 @@
 def searchinamatrix(self,matrix):
-    col,row=len(matrix[0]),0
+    col,row=len(matrix[0])-1,0
 
     while col>=0 and row<len(matrix):
         if matrix[row][col]>target:
